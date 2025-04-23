@@ -10,3 +10,5 @@ CREATE TABLE Users (
     phone VARCHAR(15),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+ALTER TABLE Users ADD role ENUM('user', 'admin') DEFAULT 'user';
