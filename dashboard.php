@@ -16,25 +16,180 @@ echo "<img src='uploads/" . $user['profile_picture'] . "' width='100' height='10
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Grocery Store - Dashboard</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin: 20px 0;
+        }
+
+        nav {
+            background-color: #2c3e50;
+            padding: 15px 0;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 10px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background-color: #e74c3c;
+        }
+
+        .content {
+            background-color: #ffffff;
+            padding: 40px 20px;
+            margin: 0 auto 80px;
+            width: 90%;
+            max-width: 1000px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .content h1 {
+            color: #27ae60;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .content h3 {
+            font-size: 24px;
+            color: #34495e;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 18px;
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        .grocery-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .grocery-section div {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            width: 30%;
+            min-width: 250px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .grocery-section div:hover {
+            transform: translateY(-5px);
+        }
+
+        .grocery-section div img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .grocery-section div h4 {
+            color: #2c3e50;
+            font-size: 22px;
+            margin-top: 15px;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .grocery-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .grocery-section div {
+                width: 80%;
+            }
+
+            nav a {
+                display: block;
+                margin: 10px auto;
+            }
+        }
+    </style>
 </head>
-<body style="text-align:center;">
+<body>
+
     <h2>Welcome, <?php echo $user['name']; ?>!</h2>
+
     <nav>
-        <a href="library.php">Library</a> |
+        <a href="library.php">Library</a>
         <?php if (isAdmin()): ?>
-    | <a href="manage_users.php">Manage Users</a>
-<?php endif; ?>
-        <a href="changepassword.php">Change Password</a> |
-        <a href="logout.php">Logout</a> |
-        <a href="update_profile.php">update profile</a>
+            <a href="manage_users.php">Manage Users</a>
+        <?php endif; ?>
+        <a href="changepassword.php">Change Password</a>
+        <a href="logout.php">Logout</a>
+        <a href="update_profile.php">Update Profile</a>
     </nav>
-    <div style="background-color: pink ; padding:80px;">
+
+    <div class="content">
         <h1>Online Grocery Store</h1>
-        <h3>Welcome Panel</h3>
-        <p>This is a standard dashboard for our website project. You can manage your projects, view the library, and change your password.</p>
+        <h3>Welcome to Your Dashboard</h3>
+        <p>This is your personalized dashboard. Manage your grocery orders, view products, and more!</p>
+
+        <div class="grocery-section">
+            <div>
+                <img src="fruits123.png" alt="Fruits">
+                <h4>Fruits</h4>
+                <p>Browse and manage all available fresh fruits. Check out the latest fruits we have in store!</p>
+            </div>
+            <div>
+                <img src="veges123.png" alt="Vegetables">
+                <h4>Vegetables</h4>
+                <p>Explore the variety of fresh vegetables for your daily needs. We have the best quality products.</p>
+            </div>
+            <div>
+                <img src="snacks.png" alt="Snacks">
+                <h4>Snacks</h4>
+                <p>Check out our collection of snacks. Perfect for a quick treat or a party!</p>
+            </div>
+        </div>
     </div>
+
+    <footer>
+        <p>&copy; 2025 Online Grocery Store | All Rights Reserved</p>
+    </footer>
+
 </body>
 </html>
