@@ -1,4 +1,15 @@
 <?php
+
+session_start();
+
+if (!empty($_SESSION['cart'])) {
+    echo "<h3>Your Cart:</h3><ul>";
+    foreach ($_SESSION['cart'] as $item => $qty) {
+        echo "<li>$item x $qty</li>";
+    }
+    echo "</ul>";
+}
+
 include_once("connection.php");
 include_once("function.php");
 
@@ -147,6 +158,22 @@ echo "<img src='uploads/" . $user['profile_picture'] . "' width='100' height='10
                 margin: 10px auto;
             }
         }
+        .purchase-btn {
+                margin-top: 15px;
+                padding: 10px 20px;
+                background-color: #27ae60;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+        }
+
+        .purchase-btn:hover {
+                background-color:rgb(184, 85, 20);
+        }
+
     </style>
 </head>
 <body>
@@ -161,31 +188,40 @@ echo "<img src='uploads/" . $user['profile_picture'] . "' width='100' height='10
         <a href="changepassword.php">Change Password</a>
         <a href="logout.php">Logout</a>
         <a href="update_profile.php">Update Profile</a>
+        <a href="checkout.php" style="display:inline-block; margin-top:20px; color:#27ae60; font-weight:bold;">Go to Checkout</a>
+
     </nav>
 
-    <div class="content">
-        <h1>Online Grocery Store</h1>
-        <h3>Welcome to Your Dashboard</h3>
-        <p>This is your personalized dashboard. Manage your grocery orders, view products, and more!</p>
-
-        <div class="grocery-section">
-            <div>
-                <img src="fruits123.png" alt="Fruits">
-                <h4>Fruits</h4>
-                <p>Browse and manage all available fresh fruits. Check out the latest fruits we have in store!</p>
-            </div>
-            <div>
-                <img src="veges123.png" alt="Vegetables">
-                <h4>Vegetables</h4>
-                <p>Explore the variety of fresh vegetables for your daily needs. We have the best quality products.</p>
-            </div>
-            <div>
-                <img src="snacks.png" alt="Snacks">
-                <h4>Snacks</h4>
-                <p>Check out our collection of snacks. Perfect for a quick treat or a party!</p>
-            </div>
-        </div>
+    <div class="grocery-section">
+    <div>
+        <img src="fruits123.png" alt="Fruits">
+        <h4>Fruits</h4>
+        <p>Browse and manage all available fresh fruits. Check out the latest fruits we have in store!</p>
+        <form action="add_to_cart.php" method="POST">
+    <input type="hidden" name="product" value="Fruits">
+    <button type="submit" class="purchase-btn">Purchase</button>
+</form>
     </div>
+    <div>
+        <img src="veges123.png" alt="Vegetables">
+        <h4>Vegetables</h4>
+        <p>Explore the variety of fresh vegetables for your daily needs. We have the best quality products.</p>
+        <form action="add_to_cart.php" method="POST">
+    <input type="hidden" name="product" value="Fruits">
+    <button type="submit" class="purchase-btn">Purchase</button>
+</form>
+    </div>
+    <div>
+        <img src="snacks.png" alt="Snacks">
+        <h4>Snacks</h4>
+        <p>Check out our collection of snacks. Perfect for a quick treat or a party!</p>
+        <form action="add_to_cart.php" method="POST">
+    <input type="hidden" name="product" value="Fruits">
+    <button type="submit" class="purchase-btn">Purchase</button>
+</form>
+    </div>
+</div>
+
 
     <footer>
         <p>&copy; 2025 Online Grocery Store | All Rights Reserved</p>
