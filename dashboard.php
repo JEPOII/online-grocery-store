@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 if (!empty($_SESSION['cart'])) {
     echo "<h3>Your Cart:</h3><ul>";
     foreach ($_SESSION['cart'] as $item => $qty) {

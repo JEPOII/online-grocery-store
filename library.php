@@ -113,7 +113,7 @@ if (!isset($_SESSION["user_id"])) {
 
     <div class="category-grid">
         <div class="category-card">
-            <img src="https://via.placeholder.com/300x150?text=Recipes" alt="Recipes">
+            <img src="Healthy-Fruit-Salad.jpg" alt="Recipes">
             <h3>Healthy Recipes</h3>
             <p>Browse meal plans and recipes using fresh grocery items.</p>
         </div>
